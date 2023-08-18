@@ -1,11 +1,17 @@
 import './App.css'
+import { LoginPage } from './pages/LoginPage'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+
 import Room from './pages/Room'
 function App() {
 
   return (
-    <>
-      <Room />
-    </>
+    <Router>
+      <Routes>
+        <Route path='/' element={<Room />} />
+        <Route path='/login' element={<LoginPage />} />
+      </Routes>
+    </Router>
   )
 }
 
