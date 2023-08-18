@@ -24,17 +24,20 @@ const Room = () => {
 
       }
 
-      if (response.events.includes("databases.*.collections.*.documents.*.deleted")) {
+      if (response.events.includes("databases.*.collections.*.documents.*.delete")) {
         console.log("MESSAGE WAS DELETED!!!")
+
         setMessages((prevState) =>
-          messages.filter((message) => message.$id != response.payload.$id)
+          prevState.filter((message) => message.$id != response.payload.$id)
         );
+
       }
     });
 
     return () => {
       unsubscribe();
     }
+
   }, []);
 
   const handleSubmit = async (e) => {
