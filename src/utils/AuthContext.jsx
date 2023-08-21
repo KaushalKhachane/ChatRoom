@@ -19,7 +19,7 @@ export const AuthProvider = ({children}) => {
             let accountDetails = await account.get();
             setUser(accountDetails)
         }catch(error){
-            console.error(error)
+            
         }
         setLoading(false)
     }
@@ -29,8 +29,7 @@ export const AuthProvider = ({children}) => {
         console.log('CREDS:', credentials)
 
         try{
-            const response = await account.createEmailSession(credentials.email, credentials.password)
-            console.log("LOGGED IN ",response)
+            let response = await account.createEmailSession(credentials.email, credentials.password)
             let accountDetails = await account.get();
             setUser(accountDetails)
             navigate('/')
@@ -40,7 +39,7 @@ export const AuthProvider = ({children}) => {
     }
 
     const handleLogout = async () => {
-        await account.deleteSession('current');
+        const response = await account.deleteSession('current');
         setUser(null)
     }
 
@@ -71,7 +70,7 @@ export const AuthProvider = ({children}) => {
         user,
         handleUserLogin,
         handleLogout,
-        handleRegister 
+        handleRegister
     }
 
     return(
@@ -83,4 +82,4 @@ export const AuthProvider = ({children}) => {
 
 export const useAuth = ()=> {return useContext(AuthContext)}
 
-export default AuthContext;  
+export default AuthContext;
