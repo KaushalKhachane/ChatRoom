@@ -29,7 +29,8 @@ export const AuthProvider = ({children}) => {
         console.log('CREDS:', credentials)
 
         try{
-            await account.createEmailSession(credentials.email, credentials.password)
+            const response = await account.createEmailSession(credentials.email, credentials.password)
+            console.log("LOGGED IN ",response)
             let accountDetails = await account.get();
             setUser(accountDetails)
             navigate('/')
@@ -70,7 +71,7 @@ export const AuthProvider = ({children}) => {
         user,
         handleUserLogin,
         handleLogout,
-        handleRegister
+        handleRegister 
     }
 
     return(
@@ -82,4 +83,4 @@ export const AuthProvider = ({children}) => {
 
 export const useAuth = ()=> {return useContext(AuthContext)}
 
-export default AuthContext;
+export default AuthContext;  
