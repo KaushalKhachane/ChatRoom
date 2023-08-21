@@ -5,6 +5,7 @@ import PrivateRoute from './components/PrivateRoute'
 import { AuthProvider } from './utils/AuthContext'
 import LoginPage from './pages/LoginPage'
 import Room from './pages/Room'
+import RegisterPage from './pages/RegisterPage'
 
 function App() {
 
@@ -13,6 +14,7 @@ function App() {
       <AuthProvider>
         <Routes>
           <Route path='/login' element={<LoginPage />} />
+          <Route path='/Register' element={<RegisterPage />} />
 
           <Route element={<PrivateRoute />} >
             <Route path='/' element={<Room />} />
