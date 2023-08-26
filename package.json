@@ -2,7 +2,6 @@
   "name": "chat-application",
   "homepage": "https://kaushalkhachane.github.io/Chat-Application-Vite",
   "private": true,
-  "proxy": "https://chat-theta-smoky.vercel.app/",
   "version": "0.0.0",
   "type": "module",
   "scripts": {
