@@ -7,7 +7,7 @@ import LoginPage from './pages/LoginPage'
 import Room from './pages/Room'
 import RegisterPage from './pages/RegisterPage'
 
-function App() {
+function App() { 
 
   return (
     <Router>
