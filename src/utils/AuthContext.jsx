@@ -29,12 +29,17 @@ export const AuthProvider = ({children}) => {
         console.log('CREDS:', credentials)
 
         try{
-            let response = await account.createEmailSession(credentials.email, credentials.password)
+            let response = await account.createEmailSession(credentials.email, credentials.password)    
+            if(!response){
+                alert('Enter Correct Credentials')
+            }     
+              
             let accountDetails = await account.get();
             setUser(accountDetails)
             navigate('/')
         }catch(error){
             console.error(error)
+            alert(error.message)
         }
     }
 
@@ -46,7 +51,10 @@ export const AuthProvider = ({children}) => {
     const handleRegister = async (e, credentials) => {
         e.preventDefault()
         console.log('Handle Register triggered!', credentials)
-
+        if(credentials.password1.length != 8 && credentials.password2.length != 8){
+            alert('Please enter valid 8 digit password')
+            return
+        }
         if(credentials.password1 !== credentials.password2){
             alert('Passwords did not match!')
             return 
@@ -60,6 +68,7 @@ export const AuthProvider = ({children}) => {
             await account.createEmailSession(credentials.email, credentials.password1)
             let accountDetails = await account.get();
             setUser(accountDetails)
+            alert('User registered Successfully!')
             navigate('/')
         }catch(error){
             console.error(error)

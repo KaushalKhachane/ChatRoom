@@ -6,7 +6,7 @@ export default defineConfig({
 
   server: {
     proxy: {
-      '/api': 'chat-theta-smoky.vercel.app/'
+      '/api': 'chat-theta-smoky.vercel.app/' || 'http://localhost:5173/'
     }
   },
 
