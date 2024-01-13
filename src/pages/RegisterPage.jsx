@@ -8,8 +8,6 @@ const RegisterPage = () => {
 
     const {handleRegister} = useAuth()
 
-
-
     const handleInputChange = (e) => {
         let name = e.target.name
         let value = e.target.value 
